@@ -10,18 +10,9 @@ import logo from './logo.svg';
 import './App.css';
 import Home from './components/Home';
 import About from './components/About';
-import createHistory from 'history/createBrowserHistory';
-//import createHistory from "history/createBrowserHistory"
+
 const noWay=()=>(<div><h1>404</h1></div>);
 
-const history=createHistory();
-const loaction=history.loaction;
-console.log(history)
-// const unlisten=history.listen((loacatin,action)=>{
-//   console.log(loaction,action)
-// })
-
-history.push('/home');
 class App extends Component {
   constructor(props){
     super(props);
