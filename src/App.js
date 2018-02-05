@@ -1,22 +1,24 @@
 import React, { Component } from 'react';
 import {
   BrowserRouter as Router,
-  MemoryRouter,
   Route,
   Redirect,
   Link,
-  Prompt,
   Switch,
 } from 'react-router-dom';
-import createHistory from 'history/createBrowserHistory'
 import logo from './logo.svg';
 import './App.css';
 import Home from './components/Home';
 import About from './components/About';
-
+import History from './History';
 const noWay=()=>(<div><h1>404</h1></div>);
-const history=createHistory();
-history.push('/about')
+//const loaction=History.location;
+
+// History.listen((loaction,action)=>{
+//   console.log('111',action,location,'111')
+// })
+// 
+
 class App extends Component {
   constructor(props){
     super(props);
@@ -24,11 +26,10 @@ class App extends Component {
     console.log(props)
   }
   componentDidMount(){
-    console.log(this.context);
+    
   }
   update(){//redux的操作
     const { update }=this.props;
-    //console.log(this,update)
     let value=this.refs.add.value;
     let newV=value.split(',')[0];
     let old=value.split(',')[1];
@@ -36,9 +37,9 @@ class App extends Component {
     update(newV,old);
   }
   pushLocation(){//路由的操作
-    //history.goBack();
-    console.log(history);
-    history.push('/about');
+    console.log(History);
+//History.push('/about');
+    History.push('/home?the=query', { some: 'state' });
   }
   render(){
     const { list }=this.props;
