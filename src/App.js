@@ -28,9 +28,6 @@ class App extends Component {
   componentDidMount(){
     
   }
-  static contextTypes = {
-    router: PropTypes.isRequired
-  };
   update(){//redux的操作
     const { update }=this.props;
     let value=this.refs.add.value;
