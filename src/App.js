@@ -1,4 +1,4 @@
-import React, { Component } from 'react';
+import React, { Component,PropTypes } from 'react';
 import {
   BrowserRouter as Router,
   Route,
@@ -28,6 +28,9 @@ class App extends Component {
   componentDidMount(){
     
   }
+  static contextTypes = {
+    router: PropTypes.isRequired
+  };
   update(){//redux的操作
     const { update }=this.props;
     let value=this.refs.add.value;
@@ -39,7 +42,8 @@ class App extends Component {
   pushLocation(){//路由的操作
     console.log(History);
 //History.push('/about');
-    History.push('/home?the=query', { some: 'state' });
+    // History.push('/home?the=query', { some: 'state' });
+    //this.context.router.history.push("/otherPath");
   }
   render(){
     const { list }=this.props;
