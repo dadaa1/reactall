@@ -1,4 +1,4 @@
-import React, { Component,PropTypes } from 'react';
+import React, { Component } from 'react';
 import {
   BrowserRouter as Router,
   Route,
@@ -12,18 +12,16 @@ import Home from './components/Home';
 import About from './components/About';
 import History from './History';
 const noWay=()=>(<div><h1>404</h1></div>);
-//const loaction=History.location;
-
-// History.listen((loaction,action)=>{
-//   console.log('111',action,location,'111')
-// })
-// 
 
 class App extends Component {
   constructor(props){
     super(props);
+    this.state={
+      isRedirect:false,
+      loaction:'/home',
+    }
     this.update=this.update.bind(this);
-    console.log(props)
+    this.pushLocation=this.pushLocation.bind(this)
   }
   componentDidMount(){
     
@@ -37,16 +35,21 @@ class App extends Component {
     update(newV,old);
   }
   pushLocation(){//路由的操作
-    console.log(History);
-//History.push('/about');
-    // History.push('/home?the=query', { some: 'state' });
-    //this.context.router.history.push("/otherPath");
+    let local="/"+this.refs.local.value;
+    this.setState({isRedirect:true,location:local});
   }
   render(){
     const { list }=this.props;
     return (
       <Router>
       <div className="App">
+      {
+        (()=>{
+          if(this.state.isRedirect){
+            return <Redirect to={this.state.location} />
+          }
+        })()
+      }
         <header className="App-header">
           <img src={logo} className="App-logo" alt="logo" />
           <h1 className="App-title">Welcome to React</h1>
@@ -61,7 +64,8 @@ class App extends Component {
         <li><Link to={'/about'}>About</Link></li>
         <li><Link to={'/adsadad'}>404</Link></li>
         <li><Link to={'/'}>返回</Link></li>
-        <li><button onClick={this.pushLocation}> 跳转</button></li>
+        <li><input type='text' ref='local'/>
+          <button onClick={this.pushLocation}> 跳转</button></li>
       </ul>
       <Switch>
         <Route exact path="/" component={Home}/>
