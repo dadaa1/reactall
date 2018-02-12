@@ -55,10 +55,11 @@ let hhh={
         }
     },
     unfire:function(key,fn){
-        if(!this.list[key]){
-           this.list[key]=[];
+        let l=this.list[key].indexOf(fn);
+        if(!this.list[key]||l<0){
+           return;
         }
-        this.list[key].splice(this.list[key].indexOf(fn),1);
+        this.list[key].splice(l,1);
     }
 }
 function onLll(name){
