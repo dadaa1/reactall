@@ -80,3 +80,5 @@ hhh.unfire('lll',onLll);
 console.log('___________________');
 hhh.fire('lll','dadaa');
 hhh.fire('hhh','hhhhh');
+
+//把订阅的函数存起来，等到需要触发的时候触发，本质上还是回调函数。
