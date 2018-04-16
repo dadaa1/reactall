@@ -10,6 +10,7 @@ import logo from './logo.svg';
 import './App.css';
 import Home from './components/Home';
 import About from './components/About';
+import NumberComponent from './components/NumberComponent';
 import History from './History';
 const noWay=()=>(<div><h1>404</h1></div>);
 
@@ -60,16 +61,18 @@ class App extends Component {
         <button onClick={()=>this.props.deleteItem(this.refs.add.value)}>delete</button>
         <button onClick={()=>this.update()}>update</button>
       <ul>
-        <li><Link to={'/home'}>Home</Link></li>
-        <li><Link to={'/about'}>About</Link></li>
-        <li><Link to={'/adsadad'}>404</Link></li>
-        <li><Link to={'/'}>返回</Link></li>
+        <li><Link to='/home'>Home</Link></li>
+        <li><Link to='/about'>About</Link></li>
+        <li><Link to='/number'>number</Link></li>
+        <li><Link to='/adsadad'>404</Link></li>
+        <li><Link to='/'>返回</Link></li>
         <li><input type='text' ref='local'/>
           <button onClick={this.pushLocation}> 跳转</button></li>
       </ul>
       <Switch>
         <Route exact path="/" component={Home}/>
         <Route  path="/home" component={Home} />
+        <Route path="/number" component={NumberComponent} />
         <Route path="/about" component={About} />
         <Redirect from='/action' to='./about' />
         <Route component={noWay}/>
