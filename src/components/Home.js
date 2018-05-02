@@ -15,6 +15,7 @@ class Home extends Component{
 	render(){
 		return(<div>
 			<h1>I'm a Home组件~</h1>
+			<button onClick={()=>{this.props.history.push('/number')}}>发哦没那~</button>
 			<h2>{ this.state.input }</h2>
 			<Input add={this.handle}></Input>
 		</div>);
