@@ -1,5 +1,5 @@
-import createHistory from 'history/createBrowserHistory'
-const history=createHistory()
+import createHistory from 'history/createBrowserHistory';
+const history = createHistory();
 //const location=history.loaction;
 
-export default history 
+export default history;
